@@ -10,7 +10,7 @@ module.exports = function (app) {
         const input = req.query.input;
 
         if (typeof input !== "string")
-            return res.status(400).send("invalid input");
+            return res.status(200).send("invalid input");
 
         let inputNum = null;
         let inputUnit = null;
@@ -28,11 +28,11 @@ module.exports = function (app) {
         }
 
         if (!inputNum && !inputUnit) {
-            return res.status(400).send("invalid number and unit");
+            return res.status(200).send("invalid number and unit");
         } else if (!inputNum) {
-            return res.status(400).send("invalid number");
+            return res.status(200).send("invalid number");
         } else if (!inputUnit) {
-            return res.status(400).send("invalid unit");
+            return res.status(200).send("invalid unit");
         }
 
         const conversion = convertHandler.convert(inputNum, inputUnit);

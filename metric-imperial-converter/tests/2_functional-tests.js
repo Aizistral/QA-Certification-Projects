@@ -31,7 +31,7 @@ suite('Functional Tests', function () {
             .keepOpen()
             .get('/api/convert?input=32g')
             .end(function (err, res) {
-                assert.equal(res.status, 400);
+                assert.equal(res.status, 200);
                 assert.deepEqual(res.text, "invalid unit");
                 done();
             });
@@ -42,7 +42,7 @@ suite('Functional Tests', function () {
             .keepOpen()
             .get('/api/convert?input=3/0L')
             .end(function (err, res) {
-                assert.equal(res.status, 400);
+                assert.equal(res.status, 200);
                 assert.deepEqual(res.text, "invalid number");
                 done();
             });
@@ -53,7 +53,7 @@ suite('Functional Tests', function () {
             .keepOpen()
             .get('/api/convert?input=5/7/2.5godzillaton')
             .end(function (err, res) {
-                assert.equal(res.status, 400);
+                assert.equal(res.status, 200);
                 assert.deepEqual(res.text, "invalid number and unit");
                 done();
             });
