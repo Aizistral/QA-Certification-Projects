@@ -21,6 +21,7 @@ suite('Functional Tests', function () {
     */
     test('#example Test GET /api/books', function (done) {
         chai.request(server)
+            .keepOpen()
             .get('/api/books')
             .end(function (err, res) {
                 assert.equal(res.status, 200);
@@ -46,6 +47,7 @@ suite('Functional Tests', function () {
 
             test('Test POST /api/books with title', function (done) {
                 chai.request(server)
+                    .keepOpen()
                     .post('/api/books')
                     .send({ title: testBook.title })
                     .end(function (err, res) {
@@ -60,6 +62,7 @@ suite('Functional Tests', function () {
 
             test('Test POST /api/books with no title given', function (done) {
                 chai.request(server)
+                    .keepOpen()
                     .post('/api/books')
                     .send({})
                     .end(function (err, res) {
@@ -76,6 +79,7 @@ suite('Functional Tests', function () {
 
             test('Test GET /api/books', function (done) {
                 chai.request(server)
+                    .keepOpen()
                     .get('/api/books')
                     .end(function (err, res) {
                         assert.strictEqual(res.status, 200);
@@ -98,6 +102,7 @@ suite('Functional Tests', function () {
 
             test('Test GET /api/books/[id] with id not in db', function (done) {
                 chai.request(server)
+                    .keepOpen()
                     .get('/api/books/3hWNXz8CNOqO6iutuQW0Llr8')
                     .end(function (err, res) {
                         assert.strictEqual(res.status, 200);
@@ -110,6 +115,7 @@ suite('Functional Tests', function () {
                 const expectedBook = Object.assign({}, testBook, { comments: [] });
 
                 chai.request(server)
+                    .keepOpen()
                     .get('/api/books/' + testBook._id)
                     .end(function (err, res) {
                         assert.strictEqual(res.status, 200);
@@ -128,6 +134,7 @@ suite('Functional Tests', function () {
                 const expectedBook = Object.assign({}, testBook, { comments: [comment] });
 
                 chai.request(server)
+                    .keepOpen()
                     .post('/api/books/' + testBook._id)
                     .send({ comment })
                     .end(function (err, res) {
@@ -139,6 +146,7 @@ suite('Functional Tests', function () {
 
             test('Test POST /api/books/[id] without comment field', function (done) {
                 chai.request(server)
+                    .keepOpen()
                     .post('/api/books/' + testBook._id)
                     .send({})
                     .end(function (err, res) {
@@ -152,6 +160,7 @@ suite('Functional Tests', function () {
                 const comment = 'Test comment #' + Math.floor(Math.random() * 1000);
 
                 chai.request(server)
+                    .keepOpen()
                     .post('/api/books/oevUNmWoE5OBS2jV8tkysGCf')
                     .send({ comment })
                     .end(function (err, res) {
@@ -167,6 +176,7 @@ suite('Functional Tests', function () {
 
             test('Test DELETE /api/books/[id] with valid id in db', function (done) {
                 chai.request(server)
+                    .keepOpen()
                     .delete('/api/books/' + testBook._id)
                     .end(function (err, res) {
                         assert.strictEqual(res.status, 200);
@@ -177,6 +187,7 @@ suite('Functional Tests', function () {
 
             test('Test DELETE /api/books/[id] with  id not in db', function (done) {
                 chai.request(server)
+                    .keepOpen()
                     .delete('/api/books/7ocJGa37cWiSi57b0JzX1GwN')
                     .end(function (err, res) {
                         assert.strictEqual(res.status, 200);
