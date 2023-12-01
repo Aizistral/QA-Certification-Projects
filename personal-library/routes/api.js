@@ -10,6 +10,15 @@
 
 const { MongoClient, ObjectId } = require('mongodb');
 
+// Important note: I would store data in-memory like I did for the
+// Metric-Imperial Converter project, but requirements for this one
+// kinda do mention that I should use MongoDB, so guess I will 🤷‍♀️
+//
+// To account for security considerations that I brought up earlier,
+// I have allocated a sacrificial M0 cluster on MongoDB Atlas for
+// this project. I am also dropping the target collection on each
+// restart of the server.
+
 /**
  * @param {string} id
  * @returns {ObjectId|null}
