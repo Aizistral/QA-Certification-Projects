@@ -15,6 +15,7 @@ suite('Functional Tests', () => {
         const locale = 'british-to-american';
 
         chai.request(server)
+            .keepOpen()
             .post('/api/translate')
             .send({ text, locale })
             .end((err, res) => {
@@ -30,6 +31,7 @@ suite('Functional Tests', () => {
         const locale = 'invalid';
 
         chai.request(server)
+            .keepOpen()
             .post('/api/translate')
             .send({ text, locale })
             .end((err, res) => {
@@ -43,6 +45,7 @@ suite('Functional Tests', () => {
         const locale = 'british-to-american';
 
         chai.request(server)
+            .keepOpen()
             .post('/api/translate')
             .send({ locale })
             .end((err, res) => {
@@ -56,6 +59,7 @@ suite('Functional Tests', () => {
         const text = 'I had a bicky then went to the chippy.';
 
         chai.request(server)
+            .keepOpen()
             .post('/api/translate')
             .send({ text })
             .end((err, res) => {
@@ -70,6 +74,7 @@ suite('Functional Tests', () => {
         const locale = 'british-to-american';
 
         chai.request(server)
+            .keepOpen()
             .post('/api/translate')
             .send({ text, locale })
             .end((err, res) => {
@@ -85,6 +90,7 @@ suite('Functional Tests', () => {
         const locale = 'american-to-british';
 
         chai.request(server)
+            .keepOpen()
             .post('/api/translate')
             .send({ text, locale })
             .end((err, res) => {
